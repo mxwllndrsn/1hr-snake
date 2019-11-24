@@ -1,62 +1,33 @@
-//snake.js
-
-window.addEventListener('keypress', keyDown, true);
-
-const canvas = document.getElementById('canvas');
-const ctx = canvas.getContext('2d');
-canvas.height = 500;//document.body.clientHeight;
-canvas.width = 500;//document.body.clientWidth;
-
-var x = canvas.width/2;
-var y = canvas.height/2;
+// snake objects
 
 
-function clear(){
-    canvas.width = canvas.width;
-}
-
-function snake(){
+// a snake is composed of segments
+function seg(){
     this.x = canvas.width/2;
     this.y = canvas.height/2;
     this.w = 10;
     this.h = 10;
-    this.seg = 2;
     this.dir = 's';
-    this.alive = true;
 
     this.update = function(){
-        this.checkPos();
-
         if(this.dir=='w'){
-            s.setY(-10);
+            this.setY(-10);
         }
         if(this.dir=='s'){
-            s.setY(10);
+            this.setY(10);
         }
         if(this.dir=='a'){
-            s.setX(-10);
+            this.setX(-10);
         }
         if(this.dir=='d'){
-            s.setX(10);
+            this.setX(10);
         }
     }
-
-    this.draw = function(){
-        clear();
-        for(var i=0; i<this.seg; i++){
-            var inc = i*10;
-            ctx.fillStyle='black';
-            ctx.fillRect(this.x+inc, this.y+inc, this.w, this.h);
-        }
-        console.log('drawing');
-    };
     this.setX = function(x){
         this.x += x;
-        this.draw();
     };
     this.setY = function(y){
         this.y += y;
-        this.draw();
     };
     this.getX = function(){
         return this.x;
@@ -64,24 +35,45 @@ function snake(){
     this.getY = function(){
         return this.y;
     }
-    this.setDir = function(dir){
-        this.dir = dir;
-    }
-    this.getDir = function(){
-        return this.dir;
+
+}
+
+
+// but behaves as a whole
+function snake(){
+    this.segments = [new seg()];
+    this.head = this.segments[0];
+    this.alive = true;
+    this.dir = 's';
+
+    this.update = function(){
+        clear();
+        this.checkPos();
+        for(var i=0; i<this.segments.length; i++){
+            console.log(this.segments[i]);
+            this.segments[i].update();
+            this.draw(this.segments[i]);
+        }
     }
 
+    this.draw = function(seg){
+        ctx.fillStyle='black';
+        ctx.fillRect(seg.x, seg.y, seg.w, seg.h);
+        console.log('drawing');
+    };
+
+
     this.checkPos = function(){
-        if(this.getX()==0){
+        if(this.head.getX()==0){
             this.die();
         }
-        if(this.getX()==canvas.width){
+        if(this.head.getX()==canvas.width){
             this.die();
         }
-        if(this.getY()==0){
+        if(this.head.getY()==0){
             this.die();
         }
-        if(this.getY()==canvas.height){
+        if(this.head.getY()==canvas.height){
             this.die();
         }
     }
@@ -92,40 +84,13 @@ function snake(){
     this.isAlive = function(){
         return this.alive;
     }
+    this.add = function(){
+        this.segments[this.segments.length++] = new seg();
+    }
+    this.setDir = function(dir){
+        this.dir = dir;
+    }
+    this.getDir = function(){
+        return this.dir;
+    }
 };
-
-var s = new snake();
-
-function keyDown(e){
-    if(e.key=='w'){
-        s.setDir('w');
-        console.log('w');
-    }
-    if(e.key=='s'){
-        s.setDir('s');
-        console.log('s');
-    }
-    if(e.key=='a'){
-        s.setDir('a');
-        console.log('a');
-    }
-    if(e.key=='d'){
-        s.setDir('d');
-        console.log('d');
-    }
-    if(e.key==' '){
-        s.add();
-        console.log('space');
-    }
-}
-
-// run
-setInterval(function(){
-    if(s.isAlive()){
-        s.update();
-        s.draw();
-    } else {
-        console.log('dead');
-    }
- }, 500);
-
