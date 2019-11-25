@@ -10,3 +10,7 @@ wasd *eat the dots*
 **2:15** Snake segment objects created
 
 **2:20** Script refactor
+
+**5:30** Segment generation and update success
+
+**6:00** Refactor + Self-collision detection success
