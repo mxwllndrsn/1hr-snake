@@ -22,7 +22,7 @@ var s = new snake();
 var f = new food();
 
 // run
-var speed = 500;
+var speed = 250;
 setInterval(function(){
     if(s.isAlive()){
         s.update();
