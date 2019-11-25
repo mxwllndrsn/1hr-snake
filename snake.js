@@ -3,7 +3,9 @@
 // some constants
 const delta = 10;
 const seg_size = delta;
-const origin = new point(canvas.width/2, canvas.height/2);
+var ox = canvas.width/2;
+var oy = canvas.width/2;
+const origin = new point(ox, oy);
 
 // a game field is composed of points
 function point(x, y){
@@ -65,6 +67,8 @@ function snake(){
 
     this.update = function(){
         clear();
+        // did we eat food?
+        f.eaten(this.head.pos);
         // update position and draw
         for(var i=0; i<this.length; i++){
             this.segments[i].update();
@@ -142,5 +146,14 @@ function snake(){
 
     this.stats = function(){
         return `Length: ${this.length}, Heading: ${this.getHeading()}, Position: ${this.head.pos.getX()}, ${this.head.pos.getY()}, Alive: ${this.alive}`;
+    }
+
+    this.inside = function(x, y){
+        for(var i=0; i<this.length; i++){
+            if(x==this.segments[i].pos.getY()
+            && y==this.segments[i].pos.getX()){
+                return true;
+            }
+        }
     }
 };

@@ -14,3 +14,5 @@ wasd *eat the dots*
 **5:30** Segment generation and update success
 
 **6:00** Refactor + Self-collision detection success
+
+**7:00** Basic game functionality complete - eat food, grow, increment score
