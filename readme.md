@@ -16,3 +16,5 @@ wasd *eat the dots*
 **6:00** Refactor + Self-collision detection success
 
 **7:00** Basic game functionality complete - eat food, grow, increment score
+
+**8:00** Command buffer implemented. 
