@@ -72,7 +72,7 @@ function keyDown(e){
     }
 }
 
-// a command queue providing 5 com buffer
+// a command queue providing 2 com buffer
 // used to solve command delay/skip issue 
 function comq(){
     // default non-empty w/ s direction
@@ -101,7 +101,7 @@ function comq(){
         return this.last;
     }
     this.full = function(){
-        return (this.q.length>=5);
+        return (this.q.length>2);
     }
 }
 
