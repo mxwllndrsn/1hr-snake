@@ -1,3 +1,5 @@
+var check_count=0;
+
 // edibles class
 
 function edible(x, y){
@@ -32,11 +34,11 @@ function food(){
         return Math.round(getRand(canvas.width)/delta)*delta;
     }
     this.eaten = function(snakePos){
+        check_count = 0;
         for(var i=0; i<this.amount; i++){
-            console.log('food check');
+            check_count++;
             var ePos = this.all[i].pos;
-            console.log(`${snakePos.getX()}, ${snakePos.getY()}, ${ePos.getX()}, ${ePos.getY()}`);
-
+            //console.log(`${snakePos.getX()}, ${snakePos.getY()}, ${ePos.getX()}, ${ePos.getY()}`);
             if(ePos.getX() == snakePos.getX()
             && ePos.getY() == snakePos.getY()){
                 s.add();
@@ -46,6 +48,7 @@ function food(){
                 score+=100;
             }
         }
+        console.log('check count', check_count);
     }
 }
 

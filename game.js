@@ -22,15 +22,20 @@ var q = new comq();
 var s = new snake();
 var f = new food();
 
+// testing
+var a = new autosnake();
+a.init();
 
 // run
 var speed = 250;
 setInterval(function(){
     if(s.isAlive()){
+        a.control(q.lastCom());
         s.update();
         f.update();
         scored();
-        console.log(q.q);
+        // diagnostics
+        // console.log(q.q);
     } else {
         console.log('dead');
     }
@@ -110,3 +115,4 @@ function comq(){
 function badDir(){
     console.log("invalid direction");
 }
+
