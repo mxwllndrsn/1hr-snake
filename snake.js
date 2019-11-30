@@ -60,13 +60,15 @@ function seg(x, y, dir){
 // but behaves as a whole
 function snake(){
     this.alive = true;
-    this.heading = 's';
+    this.heading = q.readCom();
     this.segments = [new seg(origin.getX(), origin.getY(), this.heading)];
     this.head = this.segments[0];
     this.length = 1;
 
     this.update = function(){
         clear();
+        // get heading
+        this.setHeading(q.readCom());
         // did we eat food?
         f.eaten(this.head.pos);
         // update position and draw
@@ -106,7 +108,9 @@ function snake(){
     }
 
     this.setHeading = function(dir){
+        // update head segment
         this.head.dir = dir;
+        // update snake heading
         this.heading = dir;
     }
     this.getHeading = function(){
