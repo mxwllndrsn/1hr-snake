@@ -49,9 +49,7 @@ function seg(x, y, dir){
     }
 
     this.draw = function(){
-        ctx.fillStyle='black';
         ctx.fillRect(this.pos.getX(), this.pos.getY(), this.w, this.h);
-        console.log('drawing');
     };
 
 }
@@ -81,7 +79,6 @@ function snake(){
             var curr = this.segments[i];
             var prev = this.segments[i-1];
             curr.dir = prev.dir;
-            console.log('last direction: ', curr.dir);
         }
     }
 

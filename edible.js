@@ -1,5 +1,3 @@
-var check_count=0;
-
 // edibles class
 
 function edible(x, y){
@@ -8,7 +6,6 @@ function edible(x, y){
     this.h = seg_size;
 
     this.draw = function(){
-        ctx.fillStyle='black';
         ctx.fillRect(this.pos.getX(), this.pos.getY(), this.w, this.h);
     };
 }
@@ -34,9 +31,7 @@ function food(){
         return Math.round(getRand(canvas.width)/delta)*delta;
     }
     this.eaten = function(snakePos){
-        check_count = 0;
         for(var i=0; i<this.amount; i++){
-            check_count++;
             var ePos = this.all[i].pos;
             //console.log(`${snakePos.getX()}, ${snakePos.getY()}, ${ePos.getX()}, ${ePos.getY()}`);
             if(ePos.getX() == snakePos.getX()
@@ -48,7 +43,6 @@ function food(){
                 score+=100;
             }
         }
-        console.log('check count', check_count);
     }
 }
 
