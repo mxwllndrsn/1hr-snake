@@ -4,6 +4,7 @@
 // canvas elements
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
+ctx.fillStyle = 'black';
 canvas.height = 500;//document.body.clientHeight;
 canvas.width = 500;//document.body.clientWidth;
 
@@ -30,7 +31,6 @@ setInterval(function(){
         s.update();
         f.update();
         scored();
-        console.log(q.q);
     } else {
         console.log('dead');
     }
