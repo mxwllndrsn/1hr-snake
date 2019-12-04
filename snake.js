@@ -88,10 +88,10 @@ function snake(){
         this.checkSelf();
     }
     this.checkBounds = function(){
-        if(this.head.pos.getX()==0 || this.head.pos.getX()==canvas.width){
+        if(this.head.pos.getX()==(-seg_size) || this.head.pos.getX()==canvas.width){
             this.die();
         }
-        if(this.head.pos.getY()==0 || this.head.pos.getY()==canvas.height){
+        if(this.head.pos.getY()==(-seg_size) || this.head.pos.getY()==canvas.height){
             this.die();
         }
     }
