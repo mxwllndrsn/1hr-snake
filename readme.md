@@ -17,4 +17,8 @@ wasd *eat the dots*
 
 **7:00** Basic game functionality complete - eat food, grow, increment score
 
-**8:00** Command buffer implemented. 
+**8:00** Command buffer implemented
+
+**9:00** Creation of autosnake testing branch
+
+**10:00** Testing and performance optimizations 

@@ -35,8 +35,6 @@ setInterval(function(){
         s.update();
         f.update();
         scored();
-        // diagnostics
-        // console.log(q.q);
     } else {
         console.log('dead');
     }
