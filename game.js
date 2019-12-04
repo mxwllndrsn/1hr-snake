@@ -23,10 +23,6 @@ var q = new comq();
 var s = new snake();
 var f = new food();
 
-// testing
-var a = new autosnake();
-a.init();
-
 // run
 var speed = 250;
 setInterval(function(){
