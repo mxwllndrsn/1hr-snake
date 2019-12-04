@@ -37,7 +37,6 @@ function food(){
             if(ePos.getX() == snakePos.getX()
             && ePos.getY() == snakePos.getY()){
                 s.add();
-                console.log('food eaten');
                 this.all.splice(i, 1);
                 this.amount--;
                 score+=100;
