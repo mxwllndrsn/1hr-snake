@@ -27,7 +27,6 @@ var f = new food();
 var speed = 250;
 setInterval(function(){
     if(s.isAlive()){
-        a.control(q.lastCom());
         s.update();
         f.update();
         scored();
